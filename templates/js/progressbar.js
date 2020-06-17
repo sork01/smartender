@@ -25,10 +25,43 @@ function animateRandom() {
     drinkElement = items[index].getElementsByTagName("span")[0];
   }
   var scrollW = document.getElementById('wrap-scroll');
-  scrollW.scrollTop = index*items[0].itemHeight;
-  setTimeout(function(){
-    pour(drinkElement);
-  }, 3000);
+  
+
+  target = (index - 1)*items[0].clientHeight - scrollW.scrollTop;
+  target = target + items.length * items[0].clientHeight;
+  var delta = 2;
+  var slowDown = false;
+  var moved = 0;
+  var speed = 20;
+  var identity = setInterval(animate, speed);
+  function animate() {
+    if (delta > speed && !slowDown) {
+      if (moved >= target - speed*speed) {
+        slowDown = true;
+      }
+    } else if (slowDown) {
+      console.log("Slowing down")
+      if (moved >= target) {
+        setTimeout(function(){
+          pour(drinkElement);
+        }, 1000);
+        clearInterval(identity);
+        return; 
+      }
+      delta = (target - moved)/10;
+      if (delta <= 1) {
+        delta = 1;
+      }
+    } else {     
+      delta++;
+    }
+    scrollW.scrollTop = scrollW.scrollTop + delta;
+    moved += delta;
+  } 
+
+  // setTimeout(function(){
+  //   pour(drinkElement);
+  // }, 3000);
   // console.log("random drink")
   return;
 }

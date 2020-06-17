@@ -1,37 +1,37 @@
 {
   "pump_1": {
     "name": "Pump 1",
-    "pin": 23,
+    "pin": 24,
     "flow_rate": 400,
     "value": "oj"
   },
   "pump_2": {
     "name": "Pump 2",
-    "pin": 24,
+    "pin": 23,
     "flow_rate": 150,
     "value": "vodka"
   },
   "pump_3": {
     "name": "Pump 3",
-    "pin": 5,
+    "pin": 25,
     "flow_rate": 100,
     "value": "rum"
   },
   "pump_4": {
     "name": "Pump 4",
-    "pin": 5,
+    "pin": 8,
     "flow_rate": 400,
     "value": "tonic"
   },
   "pump_5": {
     "name": "Pump 5",
-    "pin": 5,
+    "pin": 7,
     "flow_rate": 400,
     "value": "bah"
   },
   "pump_6": {
     "name": "Pump 6",
-    "pin": 5,
+    "pin": 12,
     "flow_rate": 400,
     "value": "coke"
   }

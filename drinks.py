@@ -4,7 +4,7 @@ drinkList = [
     "key": "rc",
 		"ingredients": {
 			"rum": 50,
-			"coke": 150
+			"coke": 300
 		}
 	}, {
 		"name": "Gin & Tonic",

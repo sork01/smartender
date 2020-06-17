@@ -1,6 +1,7 @@
+<meta name="mobile-web-app-capable" content="yes">
 <html>
 <head>
-<title>Infinite List Scrolling Effect Demo</title>
+<title>Smartender Menu</title>
 <style>
 {% include 'css/menu.css' %}
 {% include 'css/progressbar.css' %}
@@ -11,15 +12,34 @@
 </script>
 </head>
 <body>
+<script>
+{% include 'js/sweetalert2.all.min.js' %}
+
+function dialog(text, drink) {
+  Swal.fire({
+  title: text,
+  icon: 'question',
+  text: 'Var det den drinken du ville ha?', 
+  showCancelButton: true,
+  focusConfirm: false,
+  confirmButtonText:'Ja!',
+  cancelButtonText:'Nej'
+}).then((result) => {
+  if (result.value) {
+    pour(drink)
+    }
+})
+}
+</script>
 <div id="fullscreenbutton" onclick="document.body.requestFullscreen()"></div>
 <div id="scroll-container">
   <div class="wrap-container" id="wrap-scroll">
     <ul id="ul-scroll">
       {% for i in range(3) %}
       {% for drink in drinks %}
-      <li><span id="{{ drink["key"] }}" onclick='pour(this)' class="item">{{ drink["name"] }}</span></li>
+      <li><span id="{{ drink["key"] }}" onclick='dialog("{{ drink["name"] }}", this)' class="item">{{ drink["name"] }}</span></li>
       {% endfor %}
-      <li><span id="random" onclick='pour(this)' class="item">Random drink</span></li>
+      <li><span id="random" onclick='dialog("Random drink", this)' class="item">Random drink</span></li>
       {% endfor %}
     </ul>
   </div>

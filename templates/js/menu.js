@@ -7,23 +7,17 @@ var listOpts = {
     items: []
 };
 function scrollWrap() {
-    itemsScrolled = Math.ceil((this.scrollTop + listOpts.itemHeight / 2) / listOpts.itemHeight);
-    prepend = false;
-    if (this.scrollTop < 1) {
-        itemsScrolled = 0;
-    }
+    itemsScrolled = Math.ceil((this.scrollTop + listOpts.itemHeight/2) / listOpts.itemHeight);
     listOpts.items.forEach(function (ele) {
         ele.classList.remove('active');
     });
     if (itemsScrolled < listOpts.items.length) {
         listOpts.items[itemsScrolled].classList.add('active');
     }
-    if(itemsScrolled < 2) {
+    if(itemsScrolled < listOpts.items.length/3) {
         this.scrollTop = this.scrollTop + (listOpts.itemCount/3 * listOpts.itemHeight)
-        console.log("Too low. Changed from " + this.scrollTop + " to " + this.scrollTop + (listOpts.itemCount * listOpts.itemHeight))
-    } else if (itemsScrolled > listOpts.items.length - 3) {
+    } else if (itemsScrolled > 2*listOpts.items.length/3) {
         this.scrollTop = this.scrollTop - (listOpts.itemCount/3 * listOpts.itemHeight)
-        console.log("Too high. Changed from " + this.scrollTop + " to " + this.scrollTop - (listOpts.itemCount * listOpts.itemHeight))
     }
 }
 function initItems(scrollSmooth, init) {
@@ -34,7 +28,6 @@ function initItems(scrollSmooth, init) {
         itemsMax = listOpts.itemCount;
     }
     if (scrollSmooth && init) {
-        console.log("YOOO")
         var seamLessScrollPoint = (itemsMax - 4) * listOpts.itemHeight;
         scrollW.scrollTop = seamLessScrollPoint;
     }

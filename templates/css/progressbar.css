@@ -11,7 +11,7 @@
 #Progress_Text { 
   width: 50%;
   margin: auto;
-  top: 45%;
+  top: 46%;
   left: 25%;
   height: 10%;
   position: absolute;
@@ -20,9 +20,8 @@
   line-height: 150%;
   font-family: 'arial';
   font-weight: 400;
-  text-transform: uppercase;
   color:#000;
-  font-size: 350%;
+  font-size: 200%;
 } 
   
 #myprogressBar { 

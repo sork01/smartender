@@ -1,7 +1,7 @@
 body {
   font-family: 'arial';
   font-weight: 400;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   background-color:#31C0CC;
   color:#fff;
 }
@@ -47,7 +47,7 @@ body {
 }
 
 .wrap-container ul li {
-  height: 50px;
+  height: 65px;
   line-height: 50px;
   transition: transform .3s;
   overflow: hidden;
