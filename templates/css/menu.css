@@ -1,0 +1,79 @@
+body {
+  font-family: 'arial';
+  font-weight: 400;
+  /* text-transform: uppercase; */
+  background-color:#31C0CC;
+  color:#fff;
+}
+
+#scroll-container {
+  overflow: hidden;
+  max-width: 100%;
+  margin: auto;
+  height: 50vh;
+  top: 50px;
+  position: relative;
+  min-height: 200px;
+}
+
+.wrap-container {
+  position: relative;
+  max-height: 400px;
+  width: 100%;
+  max-width: 100%;
+  margin: auto;
+  /* background: #eee; */
+  overflow: auto;
+  padding-right: 20px;
+  mask: url(#masking);
+  /* TODO: This is the gradient but it only shows on top. Need to fix */
+  -webkit-mask-image: -webkit-gradient(linear, left bottom, left top, color-stop(80%, black), color-stop(100%, transparent));
+  -webkit-mask-image: -webkit-gradient(linear, center bottom, center top, from(transparent), color-stop(60%,black), color-stop(80%, black), to(transparent));
+
+}
+
+.wrap-container ul {
+  list-style: none;
+  position: relative;
+  transition: transform .3s;
+  font-size: 200%;
+  top: 50px;
+}
+
+.wrap-container ul, .wrap-container ul li {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.wrap-container ul li {
+  height: 65px;
+  line-height: 50px;
+  transition: transform .3s;
+  overflow: hidden;
+}
+
+.wrap-container ul li:last-of-type { padding-bottom: 50px; }
+
+.wrap-container ul li.active .item {
+  transform: scale(2);
+  transition: transform .3s;
+}
+
+.wrap-container ul li .item {
+  position: relative;
+  transition: transform 200ms;
+  display: inline-block;
+}
+
+body:fullscreen {
+  background-color:#31C0CC;
+}
+
+body:-webkit-full-screen {
+  background-color:#31C0CC;
+}
+
+body:-moz-full-screen {
+  background-color:#31C0CC;
+}

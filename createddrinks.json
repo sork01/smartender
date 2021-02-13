@@ -1,0 +1,30 @@
+{
+    "name": "Solacious Wire",
+    "ingredients": {
+        "rum": 57,
+        "gin": 43,
+        "coke": 10,
+        "tonic": 86,
+        "oj": 10
+    },
+    "key": "sw"
+},
+{
+    "name": "Enlivening Cartoon",
+    "ingredients": {
+        "coke": 282,
+        "tonic": 18
+    },
+    "key": "ec"
+},
+{
+    "name": "Ardent Room",
+    "ingredients": {
+        "gin": 79,
+        "tonic": 19,
+        "oj": 71,
+        "vodka": 10,
+        "coke": 76
+    },
+    "key": "ar"
+},

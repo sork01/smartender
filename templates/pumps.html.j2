@@ -1,0 +1,96 @@
+<html>
+<header>
+<style>
+</style>
+<script>
+function updatePump(pump, drink) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      // Show that it went well?
+    }
+  };
+  xhttp.open("POST", "/pump", true);
+  xhttp.setRequestHeader("Content-Type", "application/json")
+  xhttp.send(JSON.stringify({"pump": pump, "drink": drink}));
+}
+
+function onDrinkSelected(selectObject) {
+  var value = selectObject.value;
+  var id = selectObject.id;
+  updatePump(id, value);
+}
+
+function startPump(button) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      // Show that it went well?
+    }
+  };
+  xhttp.open("POST", "/startpump", true);
+  xhttp.setRequestHeader("Content-Type", "application/json")
+  xhttp.send(JSON.stringify({"pump": button.id}));
+}
+
+function stopPump(button) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      // Show that it went well?
+    }
+  };
+  xhttp.open("POST", "/stoppump", true);
+  xhttp.setRequestHeader("Content-Type", "application/json")
+  xhttp.send(JSON.stringify({"pump": button.id}));
+}
+
+function startAllPumps(button) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      // Show that it went well?
+    }
+  };
+  xhttp.open("POST", "/startallpumps", true);
+  xhttp.setRequestHeader("Content-Type", "application/json")
+  xhttp.send();
+}
+
+function stopAllPumps(button) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      // Show that it went well?
+    }
+  };
+  xhttp.open("POST", "/stopallpumps", true);
+  xhttp.setRequestHeader("Content-Type", "application/json")
+  xhttp.send();
+}
+</script>
+</header>
+<body>
+{% include 'menu.html' %}
+{% for pump, config in pumpConfig.items() %}
+<p>{{ config["name"] }}</p>
+<select name="{{ pump }}" id="{{ pump }}" onchange="onDrinkSelected(this)">
+{% for drinkOption in drinkOptions %}
+{% if config["value"] == drinkOption["value"] %}
+  <option value="{{ drinkOption["value"] }}" selected>{{ drinkOption["name"] }}</option>
+{% else %}
+  <option value="{{ drinkOption["value"] }}">{{ drinkOption["name"] }}</option>
+{% endif %}
+{% endfor %}
+</select>
+<button type="button" onClick="startPump(this)" id="{{ pump }}">Start pump</button>
+<button type="button" onClick="stopPump(this)" id="{{ pump }}">Stop pump</button>
+{% endfor %}
+<br />
+<br />
+<br />
+<button type="button" onClick="startAllPumps()">Start all pumps</button>
+<button type="button" onClick="stopAllPumps()">Stop all pumps</button>
+
+</body>
+</html>

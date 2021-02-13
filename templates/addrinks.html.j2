@@ -1,0 +1,45 @@
+<html>
+<header>
+<style>
+</style>
+</header>
+<body>
+<script>
+{% include 'js/sweetalert2.all.min.js' %}
+
+function dialog(text, drink) {
+  Swal.fire({
+  title: text,
+  text: "Var det den här drinken du ville lägga till?",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Ja!',
+  cancelButtonText: 'Nej!'
+}).then((result) => {
+  if (result.value) {
+    add(drink);
+  }
+})
+}
+
+</script>
+
+{% include 'menu.html' %}
+<script>
+{% include 'js/adddrink.js' %}
+</script>
+{% for drink in drinks %}
+<h1>
+<li><span id="{{ drink }}" onclick='dialog("{{ drink["name"] }}", this)' class="item">{{ drink["name"] }}</span></li>
+</h1>
+{% for ingredient in drink["ingredients"] %}
+<p>{{ ingredient + ": " + drink["ingredients"][ingredient]|string + " cl" }}</p>
+
+{% endfor %}
+{% endfor %}
+<br />
+
+</body>
+</html>

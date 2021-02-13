@@ -1,0 +1,73 @@
+<meta name="mobile-web-app-capable" content="yes">
+<html>
+<head>
+<title>Smartender Menu</title>
+<style>
+{% include 'css/menu.css' %}
+{% include 'css/progressbar.css' %}
+{% include 'css/drinks.css' %}
+</style>
+
+<script>
+{% include 'js/progressbar.js' %}
+</script>
+
+</head>
+<body>
+
+<script>
+{% include 'js/sweetalert2.all.min.js' %}
+function dialog(text, drink) {
+  Swal.fire({
+  title: text,
+  icon: 'question',
+  text: 'Var det den här drinken du ville ha?', 
+  input: 'checkbox',
+  inputValue: 0,
+  inputPlaceholder:
+    'Hardmode',
+  showCancelButton: true,
+  focusConfirm: false,
+  confirmButtonText:'Ja!',
+  cancelButtonText:'Nej'
+}).then(function(result) {
+  if (result.value) {
+    pour(drink, "hard");
+
+  } else if (result.value === 0) {
+      pour(drink, "soft");
+  } else {
+    console.log(`modal was dismissed by ${result.dismiss}`)
+  }
+})
+}
+</script>
+
+<div id="fullscreenbutton" onclick="document.body.requestFullscreen()"></div>
+<div id="scroll-container">
+  <div class="wrap-container" id="wrap-scroll">
+    <ul id="ul-scroll">
+      {% for i in range(3) %}
+      {% for drink in drinks %}
+      <li><span id="{{ drink["key"] }}" onclick='dialog("{{ drink["name"] }}", this)' class="item">{{ drink["name"] }}</span></li>
+      {% endfor %}
+      <li><span id="random" onclick='dialog("Random drink", this)' class="item">Random drink</span></li>
+      <li><span id="randoming" onclick='dialog("Random Ingredienser", this)' class="item">Random Ingredienser</span></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<script>
+{% include 'js/menu.js' %}
+</script>
+
+<div id="Progress_Status" hidden> 
+  <div id="myprogressBar"></div> 
+</div>
+<div id="Ingredient_Text" hidden>
+</div>
+<div id="Progress_Text" hidden>
+</div>
+</body>
+</html>
