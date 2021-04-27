@@ -1,2 +1,4 @@
 # smartender
-The main program for our smart bartender to work. Both interface and backend
+Software for the drinking machine made 2020
+
+Program written in python with flask. Both backend and interface.
