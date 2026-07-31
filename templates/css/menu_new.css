@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 400;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: #fff;
+  margin: 0;
+  overflow: hidden;
+  user-select: none;
+}
+
+#scroll-container {
+  overflow: hidden;
+  max-width: 100%;
+  margin: 50px auto 0;
+  height: 50vh;
+  position: relative;
+  min-height: 200px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 25px #7f5af0aa;
+}
+
+.wrap-container {
+  position: relative;
+  max-height: 400px;
+  width: 100%;
+  margin: auto;
+  overflow-y: auto;
+  padding-right: 15px;
+
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.wrap-container::-webkit-scrollbar {
+  display: none;
+}
+
+.wrap-container ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 1.8rem;
+  text-align: center;
+  top: 50px;
+  position: relative;
+}
+
+.wrap-container ul li {
+  height: 60px;
+  line-height: 60px;
+  color: #a0f0ffcc;
+  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.wrap-container ul li:last-of-type {
+  padding-bottom: 50px;
+}
+
+.wrap-container ul li.active {
+  color: #ffffff;
+  font-weight: 600;
+  transform: scale(1.9);
+  text-shadow: 0 0 12px #7f5af0, 0 0 6px #00f5d4;
+}
+
+.wrap-container ul li:hover:not(.active) {
+  color: #ff70a6;
+  transform: scale(1.2);
+  text-shadow: 0 0 5px #ff70a6aa;
+}
+
+.wrap-container ul li .item {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+body:fullscreen,
+body:-webkit-full-screen,
+body:-moz-full-screen {
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+}

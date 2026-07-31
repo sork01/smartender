@@ -21,13 +21,13 @@
     "name": "Pump 4",
     "pin": 8,
     "flow_rate": 400,
-    "value": "coke"
+    "value": "aj"
   },
   "pump_5": {
     "name": "Pump 5",
     "pin": 7,
     "flow_rate": 400,
-    "value": "tonic"
+    "value": "anj"
   },
   "pump_6": {
     "name": "Pump 6",

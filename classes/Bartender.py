@@ -4,9 +4,12 @@ import random
 import codecs
 import copy
 import addeddrinks
-from importlib import reload  
+from importlib import reload
 from classes import Pump
 from classes import rgbled
+from juicedrinks import juiceDrinkList
+
+SPIRITS = ("gin", "vodka", "rum", "tequila", "trisec", "appschnaps", "peachschnaps", "l43", "hc")
 
 class Bartender:
     pumpConfigFile = "config/pump_config.json"
@@ -34,23 +37,23 @@ class Bartender:
     def populateSupportedDrinks(self):
         self.supportedDrinks = []
         loadedIngredients = [self.pumpConfig[pump]["value"] for pump in self.pumpConfig.keys()]
-        for drink in self.drinkList:
-            supportedDrink = True
-            for ingredient in drink["ingredients"].keys():
-                if not ingredient in loadedIngredients:
-                    supportedDrink = False
-                    break
-            if supportedDrink:
-                self.supportedDrinks.append(drink)
-        for drink in self.drinkList2:
-            supportedDrink = True
-            for ingredient in drink["ingredients"].keys():
-                if not ingredient in loadedIngredients:
-                    supportedDrink = False
-                    break
-            if supportedDrink:
-                self.supportedDrinks.append(drink)
+        drinkSources = [self.drinkList, self.drinkList2]
+        if self.isJuiceMachine():
+            drinkSources.append(juiceDrinkList)
+        for drinkSource in drinkSources:
+            for drink in drinkSource:
+                supportedDrink = True
+                for ingredient in drink["ingredients"].keys():
+                    if not ingredient in loadedIngredients:
+                        supportedDrink = False
+                        break
+                if supportedDrink:
+                    self.supportedDrinks.append(drink)
         print(loadedIngredients)
+
+    def isJuiceMachine(self):
+        loadedIngredients = [self.pumpConfig[pump]["value"] for pump in self.pumpConfig.keys()]
+        return not any(ingredient in SPIRITS for ingredient in loadedIngredients)
 
     def getSupportedDrinks(self):
         return self.supportedDrinks
