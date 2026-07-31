@@ -127,6 +127,41 @@ header p {
 .c5 { background: linear-gradient(160deg, #6bcbef, #4ecdc4); }
 .c6 { background: linear-gradient(160deg, #d896ff, #a06cd5); }
 
+.random-card {
+  background: linear-gradient(270deg, #ff6b6b, #ffd166, #4ecdc4, #a06cd5, #ff6b6b);
+  background-size: 400% 400%;
+  animation: rainbow-shift 6s ease infinite, pulse-invite 2s ease-in-out infinite;
+}
+
+@keyframes rainbow-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulse-invite {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+.spin-highlight {
+  animation: none;
+  transform: scale(1.08);
+  box-shadow: 0 0 0 6px #fff, 0 0 30px 10px #fff9, 0 10px 0 rgba(0,0,0,0.15), 0 14px 20px rgba(0,0,0,0.2);
+  z-index: 2;
+}
+
+.spin-landed {
+  animation: land-bounce 0.6s ease;
+}
+
+@keyframes land-bounce {
+  0% { transform: scale(1.08); }
+  35% { transform: scale(1.22); }
+  65% { transform: scale(0.96); }
+  100% { transform: scale(1); }
+}
+
 #overlay {
   position: fixed;
   inset: 0;
@@ -266,11 +301,15 @@ header p {
 <div id="grid">
   {% set emoji = {'oj': '🍊', 'aj': '🍏', 'anj': '🍍', 'cj': '🍓', 'lemon': '🍋'} %}
   {% for drink in drinks %}
-  <button class="card c{{ loop.index0 % 7 }}" data-key="{{ drink['key'] }}" data-name="{{ drink['name'] }}" onclick="askToPour(this)">
+  <button class="card juice-card c{{ loop.index0 % 7 }}" data-key="{{ drink['key'] }}" data-name="{{ drink['name'] }}" onclick="askToPour(this)">
     <span class="emoji">{% for ing in drink['ingredients'].keys() %}{{ emoji.get(ing, '🥤') }}{% endfor %}</span>
     <span class="name">{{ drink['name'] }}</span>
   </button>
   {% endfor %}
+  <button class="card random-card" onclick="startRandomSpin()">
+    <span class="emoji">🔀</span>
+    <span class="name">Random Juice!</span>
+  </button>
 </div>
 
 <div id="overlay" hidden>
@@ -301,13 +340,54 @@ header p {
 <script>
 let pendingKey = null;
 let pendingName = null;
+let spinning = false;
 
 function askToPour(card) {
+  if (spinning) return;
   pendingKey = card.getAttribute('data-key');
   pendingName = card.getAttribute('data-name');
   document.getElementById('confirm-emoji').textContent = card.querySelector('.emoji').textContent;
   document.getElementById('confirm-text').textContent = 'Pour ' + pendingName + '?';
   document.getElementById('overlay').hidden = false;
+}
+
+function startRandomSpin() {
+  if (spinning) return;
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.juice-card'));
+  if (!cards.length) return;
+  spinning = true;
+
+  var targetIndex = Math.floor(Math.random() * cards.length);
+  var totalSteps = cards.length * 3 + targetIndex;
+  var step = 0;
+  var current = -1;
+
+  function tick() {
+    if (current >= 0) cards[current].classList.remove('spin-highlight');
+    current = step % cards.length;
+    cards[current].classList.add('spin-highlight');
+
+    if (step >= totalSteps) {
+      setTimeout(function() {
+        cards[current].classList.remove('spin-highlight');
+        cards[current].classList.add('spin-landed');
+        pendingKey = cards[current].getAttribute('data-key');
+        pendingName = cards[current].getAttribute('data-name');
+        setTimeout(function() {
+          cards[current].classList.remove('spin-landed');
+          spinning = false;
+          doPour();
+        }, 700);
+      }, 250);
+      return;
+    }
+
+    step++;
+    var progress = step / totalSteps;
+    var delay = 60 + Math.pow(progress, 3) * 480;
+    setTimeout(tick, delay);
+  }
+  tick();
 }
 
 function cancelPour() {

@@ -65,6 +65,13 @@ juiceDrinkList = [
 			"oj": 100
 		}
 	}, {
+		"name": "Apple Pineapple Twist",
+		"key": "apt",
+		"ingredients": {
+			"aj": 150,
+			"anj": 150
+		}
+	}, {
 		"name": "Tropical Trio",
 		"key": "tt",
 		"ingredients": {
