@@ -3,90 +3,90 @@ juiceDrinkList = [
 		"name": "Orange Juice",
 		"key": "oj_straight",
 		"ingredients": {
-			"oj": 300
+			"oj": 200
 		}
 	}, {
 		"name": "Apple Juice",
 		"key": "aj_straight",
 		"ingredients": {
-			"aj": 300
+			"aj": 200
 		}
 	}, {
 		"name": "Pineapple Juice",
 		"key": "anj_straight",
 		"ingredients": {
-			"anj": 300
+			"anj": 200
 		}
 	}, {
 		"name": "Cranberry Juice",
 		"key": "cj_straight",
 		"ingredients": {
-			"cj": 300
+			"cj": 200
 		}
 	}, {
 		"name": "Lemon Juice",
 		"key": "lemon_straight",
 		"ingredients": {
-			"lemon": 300
+			"lemon": 200
 		}
 	}, {
 		"name": "Pineapple Breeze",
 		"key": "pbv",
 		"ingredients": {
-			"oj": 150,
-			"anj": 150
+			"oj": 100,
+			"anj": 100
 		}
 	}, {
 		"name": "Apple Sunrise",
 		"key": "ajv",
 		"ingredients": {
-			"aj": 200,
-			"oj": 100
+			"aj": 133,
+			"oj": 67
 		}
 	}, {
 		"name": "Apple Berry Splash",
 		"key": "abv",
 		"ingredients": {
-			"aj": 200,
-			"cj": 100
+			"aj": 133,
+			"cj": 67
 		}
 	}, {
 		"name": "Berry Breeze",
 		"key": "bbv",
 		"ingredients": {
-			"cj": 150,
-			"anj": 150
+			"cj": 100,
+			"anj": 100
 		}
 	}, {
 		"name": "Cranberry Sunrise",
 		"key": "tmv",
 		"ingredients": {
-			"cj": 200,
-			"oj": 100
+			"cj": 133,
+			"oj": 67
 		}
 	}, {
 		"name": "Apple Pineapple Twist",
 		"key": "apt",
 		"ingredients": {
-			"aj": 150,
-			"anj": 150
+			"aj": 100,
+			"anj": 100
 		}
 	}, {
 		"name": "Tropical Trio",
 		"key": "tt",
 		"ingredients": {
-			"oj": 100,
-			"aj": 100,
-			"anj": 100
+			"oj": 67,
+			"aj": 67,
+			"anj": 66
 		}
 	}, {
 		"name": "Fruit Punch",
 		"key": "fp",
 		"ingredients": {
-			"oj": 75,
-			"cj": 75,
-			"aj": 75,
-			"anj": 75
+			"oj": 50,
+			"cj": 50,
+			"aj": 50,
+			"anj": 50
 		}
 	}
 ]
