@@ -145,8 +145,8 @@ header p {
 #overlay[hidden] { display: none; }
 
 #cup-wrap {
-  width: 140px;
-  height: 190px;
+  width: clamp(100px, 18vh, 140px);
+  height: clamp(130px, 26vh, 190px);
   border: 8px solid #444;
   border-radius: 0 0 30px 30px;
   position: relative;
@@ -166,14 +166,14 @@ header p {
 }
 
 .overlay-title {
-  font-size: 2.2rem;
+  font-size: clamp(1.4rem, 4.5vh, 2.2rem);
   font-weight: 800;
   color: #ff6b6b;
-  margin: 25px 0 5px;
+  margin: clamp(12px, 3vh, 25px) 0 5px;
 }
 
 .overlay-sub {
-  font-size: 1.3rem;
+  font-size: clamp(0.9rem, 2.4vh, 1.3rem);
   color: #444;
   font-weight: 500;
 }
@@ -181,12 +181,18 @@ header p {
 #confirm-box {
   background: rgba(255,255,255,0.9);
   border-radius: 30px;
-  padding: 35px 45px;
+  padding: clamp(20px, 4vh, 35px) clamp(25px, 5vw, 45px);
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
 #confirm-emoji {
-  font-size: 4rem;
+  font-size: clamp(2.5rem, 7vh, 4rem);
+}
+
+#confirm-text {
+  font-size: clamp(1.1rem, 3vh, 1.6rem);
+  font-weight: 700;
+  margin-top: 10px;
 }
 
 #confirm-buttons {
@@ -199,9 +205,9 @@ header p {
 .big-btn {
   border: none;
   border-radius: 20px;
-  padding: 18px 35px;
+  padding: clamp(12px, 2.5vh, 18px) clamp(20px, 4vw, 35px);
   font-family: inherit;
-  font-size: 1.4rem;
+  font-size: clamp(1.1rem, 2.8vh, 1.4rem);
   font-weight: 700;
   color: #fff;
   cursor: pointer;
@@ -270,7 +276,7 @@ header p {
 <div id="overlay" hidden>
   <div id="confirm-box">
     <div id="confirm-emoji">🥤</div>
-    <div id="confirm-text" style="font-size:1.6rem; font-weight:700; margin-top:10px;"></div>
+    <div id="confirm-text"></div>
     <div id="confirm-buttons">
       <button class="big-btn" id="yes-btn" onclick="doPour()">Yes please! 😋</button>
       <button class="big-btn" id="no-btn" onclick="cancelPour()">No thanks</button>
