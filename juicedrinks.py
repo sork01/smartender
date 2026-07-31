@@ -30,35 +30,35 @@ juiceDrinkList = [
 			"lemon": 300
 		}
 	}, {
-		"name": "Pineapple Breeze (Virgin)",
+		"name": "Pineapple Breeze",
 		"key": "pbv",
 		"ingredients": {
 			"oj": 150,
 			"anj": 150
 		}
 	}, {
-		"name": "Apple Judy (Virgin)",
+		"name": "Apple Sunrise",
 		"key": "ajv",
 		"ingredients": {
 			"aj": 200,
 			"oj": 100
 		}
 	}, {
-		"name": "Apple Breeze (Virgin)",
+		"name": "Apple Berry Splash",
 		"key": "abv",
 		"ingredients": {
 			"aj": 200,
 			"cj": 100
 		}
 	}, {
-		"name": "Bay Breeze (Virgin)",
+		"name": "Berry Breeze",
 		"key": "bbv",
 		"ingredients": {
 			"cj": 150,
 			"anj": 150
 		}
 	}, {
-		"name": "The Madras (Virgin)",
+		"name": "Cranberry Sunrise",
 		"key": "tmv",
 		"ingredients": {
 			"cj": 200,

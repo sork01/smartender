@@ -32,6 +32,10 @@ def getDrink():
 def getDrink2():
     return render_template('drinks2.html.j2', drinks=bartender.getSupportedDrinks())
 
+@app.route('/juice', methods=['GET'])
+def getJuice():
+    return render_template('juice.html.j2', drinks=bartender.getSupportedJuiceDrinks())
+
 @app.route('/addrinks', methods=['GET'])
 def getAddedDrinks():
     print(bartender.getAddedDrinks())

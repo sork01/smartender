@@ -28,11 +28,12 @@ class Bartender:
         self.tempDrinks =[]
         self.drinkOptions = drinkOptions
         self.populateSupportedDrinks()
+        self.populateSupportedJuiceDrinks()
         self.setupPumps()
         self.led.run()
         self.stopAllPumps()
         self.initateAddedDrinks()
-        
+
 
     def populateSupportedDrinks(self):
         self.supportedDrinks = []
@@ -55,8 +56,23 @@ class Bartender:
         loadedIngredients = [self.pumpConfig[pump]["value"] for pump in self.pumpConfig.keys()]
         return not any(ingredient in SPIRITS for ingredient in loadedIngredients)
 
+    def populateSupportedJuiceDrinks(self):
+        self.supportedJuiceDrinks = []
+        loadedIngredients = [self.pumpConfig[pump]["value"] for pump in self.pumpConfig.keys()]
+        for drink in juiceDrinkList:
+            supportedDrink = True
+            for ingredient in drink["ingredients"].keys():
+                if not ingredient in loadedIngredients:
+                    supportedDrink = False
+                    break
+            if supportedDrink:
+                self.supportedJuiceDrinks.append(drink)
+
     def getSupportedDrinks(self):
         return self.supportedDrinks
+
+    def getSupportedJuiceDrinks(self):
+        return self.supportedJuiceDrinks
         
     def populateRandomDrinks(self):
         adDrinks = []
@@ -83,6 +99,7 @@ class Bartender:
         self.pumpConfig[pumpId]["value"] = drink
         self.savePumpConfig()
         self.populateSupportedDrinks()
+        self.populateSupportedJuiceDrinks()
         self.setupPumps()
     
     def savePumpConfig(self):
@@ -156,8 +173,8 @@ class Bartender:
                 print(ingredient + ":")
                 threads.append(self.pumps[ingredient].pour(amount))
             drinkFound = True
-        else:   
-            for drink in copy.deepcopy(self.supportedDrinks):
+        else:
+            for drink in copy.deepcopy(self.supportedDrinks + self.supportedJuiceDrinks):
                 if drink["key"] == drinkKey:
                     for ingredient, amount in drink["ingredients"].items():
                         for name in self.drinkOptions:
