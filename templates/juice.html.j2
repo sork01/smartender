@@ -334,14 +334,12 @@ function startPouringAnimation(duration, name) {
   var fill = document.getElementById('cup-fill');
   var sub = pouring.querySelector('.overlay-sub');
   sub.textContent = name;
+  pouring.hidden = false;
   fill.style.transition = 'none';
   fill.style.height = '0%';
-  pouring.hidden = false;
-
-  requestAnimationFrame(function() {
-    fill.style.transition = 'height ' + duration + 's linear';
-    fill.style.height = '100%';
-  });
+  void fill.offsetHeight;
+  fill.style.transition = 'height ' + duration + 's linear';
+  fill.style.height = '100%';
 
   setTimeout(function() {
     pouring.hidden = true;
