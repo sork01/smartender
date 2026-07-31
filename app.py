@@ -22,7 +22,7 @@ bartender = Bartender.Bartender(drinkList, drinkList2, drinkOptions)
 
 @app.route("/")
 def hello():
-    return "Hello World!"
+    return render_template('index.html.j2')
 
 @app.route('/drinks', methods=['GET'])
 def getDrink():

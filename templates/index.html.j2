@@ -1,0 +1,74 @@
+<meta name="mobile-web-app-capable" content="yes">
+<html>
+<head>
+<title>Smartender</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: #fff;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  user-select: none;
+}
+
+h1 {
+  letter-spacing: 4px;
+  text-shadow: 0 0 12px #7f5af0, 0 0 6px #00f5d4;
+  margin: 0;
+}
+
+#choices {
+  display: flex;
+  gap: 30px;
+}
+
+.choice {
+  display: block;
+  width: 220px;
+  padding: 30px 20px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 25px #7f5af0aa;
+  color: #a0f0ffcc;
+  text-decoration: none;
+  text-align: center;
+  font-size: 1.2rem;
+  transition: transform 0.2s ease, color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.choice:hover {
+  color: #fff;
+  transform: scale(1.05);
+  text-shadow: 0 0 12px #00f5d4;
+}
+
+#fullscreenbutton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+}
+</style>
+</head>
+<body>
+
+<div id="fullscreenbutton" onclick="document.body.requestFullscreen()"></div>
+
+<h1>Smartender</h1>
+
+<div id="choices">
+  <a class="choice" href="/drinks">Classic Menu</a>
+  <a class="choice" href="/drinks2">New Menu</a>
+</div>
+
+</body>
+</html>
